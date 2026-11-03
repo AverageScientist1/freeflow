@@ -33,9 +33,9 @@
     "test": "vitest run",
     "test:desktop": "electron-vite build && playwright test -c playwright.desktop.config.ts",
     "icon": "node scripts/make-icon.mjs",
-    "dist": "electron-vite build && electron-builder --win",
-    "dist:dir": "electron-vite build && electron-builder --win --dir",
-    "dist:mac": "electron-vite build && electron-builder --mac"
+    "dist": "electron-vite build && electron-builder --win --publish never",
+    "dist:dir": "electron-vite build && electron-builder --win --dir --publish never",
+    "dist:mac": "electron-vite build && electron-builder --mac --publish never"
   },
   "build": {
     "appId": "app.freeflow.desktop",
