@@ -42,7 +42,7 @@ test.describe('removing samples', () => {
   test('SMP-2 Ctrl and Shift mark several samples, which are removed together', async ({ page }) => {
     await threeSamples(page)
     await opt(page, /Demo sample 1/).click()
-    await opt(page, /Demo sample 3/).click({ modifiers: ['Control'] })
+    await opt(page, /Demo sample 3/).click({ modifiers: ['ControlOrMeta'] })
     await expect(opt(page, /Demo sample 1/)).toHaveAttribute('aria-selected', 'true')
     await expect(opt(page, /Demo sample 2/)).toHaveAttribute('aria-selected', 'false')
     await expect(opt(page, /Demo sample 3/)).toHaveAttribute('aria-selected', 'true')
@@ -52,7 +52,7 @@ test.describe('removing samples', () => {
     await opt(page, /Demo sample 3/).click({ modifiers: ['Shift'] })
     await expect(opt(page, /Demo sample 2/)).toHaveAttribute('aria-selected', 'true')
     await opt(page, /Demo sample 1/).click()
-    await opt(page, /Demo sample 3/).click({ modifiers: ['Control'] })
+    await opt(page, /Demo sample 3/).click({ modifiers: ['ControlOrMeta'] })
     page.once('dialog', (d) => { void d.accept() })
     await page.getByRole('button', { name: 'Remove 2 samples' }).click()
     await expect(list(page).getByRole('option')).toHaveCount(1)

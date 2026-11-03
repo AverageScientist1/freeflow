@@ -22,8 +22,8 @@ test.beforeAll(() => {
 
 const launch = (profile: string, args: string[] = []): Promise<ElectronApplication> =>
   electron.launch(exe
-    ? { executablePath: exe, args: [`--user-data-dir=${userData(profile)}`, ...args] }
-    : { args: ['.', `--user-data-dir=${userData(profile)}`, ...args], cwd: appRoot })
+    ? { executablePath: exe, args: [`--user-data-dir=${userData(profile)}`, ...(process.env['CI'] ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] : []), ...args] }
+    : { args: ['.', `--user-data-dir=${userData(profile)}`, ...(process.env['CI'] ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] : []), ...args], cwd: appRoot })
 
 // closing asks about unsaved work; the tests answer Leave so the real dialog never blocks them
 const quit = async (a: ElectronApplication): Promise<void> => {

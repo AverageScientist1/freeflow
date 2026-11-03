@@ -50,15 +50,15 @@ test.describe('zoom of the thumbnails', () => {
     const gallery = page.locator('.gallery')
     const box = (await gallery.boundingBox())!
     await page.mouse.move(box.x + 100, box.y + 100)
-    await page.keyboard.down('Control')
+    await page.keyboard.down('ControlOrMeta')
     await page.mouse.wheel(0, -300) // up: bigger
     await page.mouse.wheel(0, -300)
-    await page.keyboard.up('Control')
+    await page.keyboard.up('ControlOrMeta')
     await expect.poll(async () => (await tile.boundingBox())!.width).toBeGreaterThan(w0 + 30)
     const big = (await tile.boundingBox())!.width
-    await page.keyboard.down('Control')
+    await page.keyboard.down('ControlOrMeta')
     for (let i = 0; i < 6; i++) await page.mouse.wheel(0, 300) // down: smaller
-    await page.keyboard.up('Control')
+    await page.keyboard.up('ControlOrMeta')
     await expect.poll(async () => (await tile.boundingBox())!.width).toBeLessThan(big - 60)
     // every thumbnail has the same size
     const widths = await page.locator('.gallery figure canvas').evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().width)))
@@ -85,9 +85,9 @@ test.describe('zoom of the thumbnails', () => {
     await expect.poll(async () => Math.round((await tile.boundingBox())!.width)).toBe(640)
     const box = (await page.locator('.sheet-scroll').boundingBox())!
     await page.mouse.move(box.x + 50, box.y + 50)
-    await page.keyboard.down('Control')
+    await page.keyboard.down('ControlOrMeta')
     await page.mouse.wheel(0, -300) // already the biggest
-    await page.keyboard.up('Control')
+    await page.keyboard.up('ControlOrMeta')
     await expect.poll(async () => Math.round((await tile.boundingBox())!.width)).toBe(640)
   })
 })

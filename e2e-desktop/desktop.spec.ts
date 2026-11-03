@@ -20,7 +20,7 @@ test.beforeAll(async () => {
   const exe = process.env['FREEFLOW_EXE']
   // its own profile folder: the program allows one window per profile, so a copy that is open on this computer must not stop the tests
   const profile = `--user-data-dir=${join(work, 'profile')}`
-  app = await electron.launch(exe ? { executablePath: exe, args: [profile] } : { args: ['.', profile], cwd: join(__dirname, '..') })
+  app = await electron.launch(exe ? { executablePath: exe, args: [profile, ...(process.env['CI'] ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] : [])] } : { args: ['.', profile, ...(process.env['CI'] ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] : [])], cwd: join(__dirname, '..') })
   page = await app.firstWindow()
   await page.waitForLoadState('domcontentloaded')
   // the app asks before discarding unsaved work; the tests always agree

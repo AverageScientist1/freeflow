@@ -3,7 +3,7 @@ name: Build Freeflow
 # Builds the program for Mac and Windows on GitHub's own machines (a Mac program can only be built on a Mac).
 # Run it from the Actions tab ("Run workflow"), or it runs on every push. The programs appear under "Artifacts".
 # On the Mac machine it also starts the program built from source and drives it once (test:desktop), so the run says
-# whether the program really opens on a Mac; that step does not stop the build if it fails.
+# whether the program really opens on a Mac. The programs are still built and uploaded if a test step fails.
 on:
   push:
   workflow_dispatch:
@@ -39,18 +39,18 @@ jobs:
       - run: npm test
       - name: Run the browser tests on the Mac (the page, the menus and the keyboard)
         if: runner.os == 'macOS'
-        continue-on-error: true
         run: |
           npx playwright install chromium
           npx playwright test
       - name: Start the program on a Mac and drive it once
         if: runner.os == 'macOS'
-        continue-on-error: true
         run: npm run test:desktop
       - run: ${{ matrix.command }}
+        if: ${{ !cancelled() }}
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
       - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
         with:
           name: ${{ matrix.artifact }}
           path: ${{ matrix.files }}

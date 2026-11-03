@@ -121,7 +121,7 @@ test.describe('right-click menus', () => {
   test('MENU-4 with several samples marked, the menu acts on all of them', async ({ page }) => {
     await threeSamples(page)
     await opt(page, /Demo sample 1/).click()
-    await opt(page, /Demo sample 3/).click({ modifiers: ['Control'] })
+    await opt(page, /Demo sample 3/).click({ modifiers: ['ControlOrMeta'] })
     await opt(page, /Demo sample 3/).click({ button: 'right' })
     const item = sampleMenu(page).getByRole('menuitem', { name: 'Remove 2 samples from the Workbench…' })
     await expect(item).toBeVisible()

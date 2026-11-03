@@ -219,7 +219,7 @@ test.describe('apply gate to group', () => {
     await page.getByRole('button', { name: /Delete population/ }).click()
     await sample(page, /a\.fcs/).click()
     await popRow(page, /Gate 1/).click()
-    await menu(page, 'Gating', /^Apply gate to group\s+Alt\+G$/)
+    await menu(page, 'Gating', /^Apply gate to group\s+(Alt\+G|⌥G)$/)
     await sample(page, /b\.fcs/).click()
     await expect(popRow(page, /Gate 1/)).toBeVisible()
   })

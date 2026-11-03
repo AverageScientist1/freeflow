@@ -2,7 +2,8 @@ import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
   testDir: 'e2e',
-  timeout: 30_000,
+  timeout: process.env['CI'] ? 60_000 : 30_000, // the shared CI machines are slow
+  workers: process.env['CI'] ? 2 : undefined,
   fullyParallel: true,
   retries: 0,
   reporter: [['list']],

@@ -63,8 +63,8 @@ test.describe('applying gates to a chosen scope', () => {
     await drawRect(page, ...MAIN_CLUSTER) // sample 3 has no group: its gate stays in sample 3
     expect(await hasGate(page, 1)).toBe(false)
     await opt(page, /Demo sample 1/).click()
-    await opt(page, /Demo sample 4/).click({ modifiers: ['Control'] })
-    await opt(page, /Demo sample 3/).click({ modifiers: ['Control'] }) // the last one added is the open one
+    await opt(page, /Demo sample 4/).click({ modifiers: ['ControlOrMeta'] })
+    await opt(page, /Demo sample 3/).click({ modifiers: ['ControlOrMeta'] }) // the last one added is the open one
     await popRow(page, /Gate 1/).click({ button: 'right' })
     const pm = page.getByRole('menu', { name: 'Population menu' })
     await pm.getByRole('menuitem', { name: 'Apply to…' }).hover()
