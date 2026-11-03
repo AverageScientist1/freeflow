@@ -1,0 +1,12 @@
+﻿node_modules
+out
+dist
+*.log
+release
+test-results
+playwright-report
+.claude
+.DS_Store
+*.tsbuildinfo
+.vscode
+.idea

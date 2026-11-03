@@ -1,0 +1,99 @@
+/* Design tokens: colours, type, spacing and radii used across the interface. */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f2f2f2;
+  --color-surface-alt: #e5e6e6;
+  --color-surface-selected: #d9e8ea;
+  --color-border: #cfd1d3;
+  --color-border-input: #767a80;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c6066;
+  --color-chrome: #1f1f1f;
+  --color-chrome-alt: #333333;
+  --color-on-chrome: #f2f2f2;
+  --color-on-chrome-muted: #b8b8b8;
+  --color-accent: #0b6e75;
+  --color-on-accent: #ffffff;
+  --color-focus-ring: #0b6e75;
+  --color-danger: #b3261e;
+  --color-success: #1f7a4d;
+  --color-warning: #8a5a00;
+
+  --font-sans: Inter, Roboto, system-ui, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --text-xs: 11px/14px var(--font-sans);
+  --text-sm: 12px/16px var(--font-sans);
+  --text-base: 13px/18px var(--font-sans);
+  --text-md: 500 14px/20px var(--font-sans);
+  --text-lg: 600 16px/22px var(--font-sans);
+  --text-xl: 600 20px/28px var(--font-sans);
+
+  --space-0: 0; --space-1: 2px; --space-2: 4px; --space-3: 6px; --space-4: 8px;
+  --space-5: 12px; --space-6: 16px; --space-7: 24px; --space-8: 32px;
+
+  --radius-sm: 2px; --radius-md: 4px; --radius-lg: 8px; --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.10);
+  --shadow-pop: 0 8px 24px rgba(0,0,0,.28);
+  --motion-fast: 100ms; --motion-base: 160ms; --motion-ease: cubic-bezier(.2,.8,.2,1);
+
+  --layout-menu-bar: 30px; --layout-header: 40px; --layout-mode-rail: 58px;
+  --layout-left-panel: 400px; --layout-right-panel: 320px; --layout-row: 30px;
+  --layout-gallery-thumb: 200px;
+
+  --plot-bg: #ffffff; --plot-axis: #1a1a1a; --plot-grid: #e5e6e6;
+  --plot-gate-stroke: #0b6e75; --plot-gate-fill: rgba(11,110,117,.12);
+}
+
+/* Plot pseudocolour ramp (cold to hot). */
+:root {
+  --plot-heat-0: #2c3e9e; --plot-heat-1: #1f8fd1; --plot-heat-2: #2fb36a;
+  --plot-heat-3: #e6d12b; --plot-heat-4: #e8772b; --plot-heat-5: #c62828;
+}
+
+/* Plot histogram colours */
+:root {
+  color-scheme: light;
+  --plot-contour: #3f4a57; --plot-zebra-a: #dde2ea; --plot-zebra-b: #aab3c2;
+  --plot-hist-fill: rgba(11, 110, 117, 0.25);
+  --plot-hist-stroke: #0b6e75;
+}
+
+/* Dark theme: same roles, different values. Applied with data-theme="dark" on the root element. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #1e1f22;
+  --color-surface: #26282b;
+  --color-surface-alt: #1b1c1e;
+  --color-surface-selected: #17434a;
+  --color-border: #3a3d41;
+  --color-border-input: #8a9099;
+  --color-text: #e8e9ea;
+  --color-text-muted: #a3a8ae;
+  --color-chrome: #121314;
+  --color-chrome-alt: #1b1c1e;
+  --color-on-chrome: #f2f2f2;
+  --color-on-chrome-muted: #b8b8b8;
+  --color-accent: #3fb8c2;
+  --color-on-accent: #04282b;
+  --color-focus-ring: #5fd0d9;
+  --color-danger: #ff8a80;
+  --color-success: #6fcf97;
+  --color-warning: #f2b950;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --plot-bg: #16171a;
+  --plot-axis: #d7dadd;
+  --plot-grid: #2d2f33;
+  --plot-gate-stroke: #5fd0d9;
+  --plot-gate-fill: rgba(95, 208, 217, 0.16);
+  --plot-contour: #b7c0cc; --plot-zebra-a: #2e333a; --plot-zebra-b: #4a525e;
+  --plot-hist-fill: rgba(95, 208, 217, 0.28);
+  --plot-hist-stroke: #5fd0d9;
+  --plot-heat-0: #4a63d6;
+  --plot-heat-1: #2fa8e8;
+  --plot-heat-2: #3fcf84;
+  --plot-heat-3: #f0dc4a;
+  --plot-heat-4: #f58a3a;
+  --plot-heat-5: #ff5a4f;
+}

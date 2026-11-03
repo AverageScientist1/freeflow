@@ -1,0 +1,56 @@
+name: Build Freeflow
+
+# Builds the program for Mac and Windows on GitHub's own machines (a Mac program can only be built on a Mac).
+# Run it from the Actions tab ("Run workflow"), or it runs on every push. The programs appear under "Artifacts".
+# On the Mac machine it also starts the program built from source and drives it once (test:desktop), so the run says
+# whether the program really opens on a Mac; that step does not stop the build if it fails.
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            command: npm run dist:mac
+            artifact: Freeflow-Mac
+            files: |
+              release/*.dmg
+              release/*.zip
+          - os: windows-latest
+            command: npm run dist
+            artifact: Freeflow-Windows
+            files: |
+              release/*.exe
+              release/*.zip
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Run the browser tests on the Mac (the page, the menus and the keyboard)
+        if: runner.os == 'macOS'
+        continue-on-error: true
+        run: |
+          npx playwright install chromium
+          npx playwright test
+      - name: Start the program on a Mac and drive it once
+        if: runner.os == 'macOS'
+        continue-on-error: true
+        run: npm run test:desktop
+      - run: ${{ matrix.command }}
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.files }}
+          if-no-files-found: error
