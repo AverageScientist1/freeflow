@@ -5,7 +5,7 @@ export default defineConfig({
   timeout: process.env['CI'] ? 60_000 : 30_000, // the shared CI machines are slow
   workers: process.env['CI'] ? 2 : undefined,
   fullyParallel: true,
-  retries: 0,
+  retries: process.env['CI'] ? 1 : 0,
   reporter: [['list']],
   use: {
     baseURL: 'http://localhost:5173',

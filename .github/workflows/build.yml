@@ -43,7 +43,7 @@ jobs:
           npx playwright install chromium
           npx playwright test
       - name: Start the program on a Mac and drive it once
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && !cancelled()
         run: npm run test:desktop
       - run: ${{ matrix.command }}
         if: ${{ !cancelled() }}

@@ -116,6 +116,7 @@ test.describe('drag and drop', () => {
     const saved = readFileSync(await dl.path())
     await page.getByRole('menuitem', { name: 'File', exact: true }).click()
     await page.getByRole('menuitem', { name: /Load demo sample/ }).click() // unsaved again
+    await expect(samples(page)).toHaveCount(2)
     let asked = ''
     page.once('dialog', (d) => { asked = d.message(); void d.accept() })
     await drop(page, [{ name: 'analysis.ffwb', bytes: saved }])

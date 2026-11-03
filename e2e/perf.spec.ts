@@ -1,4 +1,6 @@
 import { writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { test, expect, drawRect, popRow, rowNumbers, addFile } from './helpers'
 import { writeFcs, mulberry32, DEMO_PARAMS } from '../src/core/synth'
 
@@ -6,6 +8,7 @@ import { writeFcs, mulberry32, DEMO_PARAMS } from '../src/core/synth'
 const EVENTS = 1_500_000
 
 test('PERF-1 a 1.5 million event file loads, plots and gates in reasonable time', async ({ page }) => {
+  test.skip(!!process.env['CI'], 'the limits are for a normal computer, not for a shared CI machine')
   test.setTimeout(120_000)
   const rand = mulberry32(4)
   const cols = DEMO_PARAMS.map(() => new Float32Array(EVENTS))
@@ -35,7 +38,7 @@ test('PERF-1 a 1.5 million event file loads, plots and gates in reasonable time'
   await expect(page.getByRole('group', { name: /Histogram of/ })).toBeVisible()
   const histMs = Date.now() - t2
 
-  writeFileSync(`${process.env['TEMP']}\\perf-ui.txt`, `events ${EVENTS}\nload and first plot ${loadMs} ms\nfirst gate ${gateMs} ms (${gate.count} events)\nswitch to histogram ${histMs} ms`)
+  writeFileSync(join(tmpdir(), 'freeflow-perf-ui.txt'), `events ${EVENTS}\nload and first plot ${loadMs} ms\nfirst gate ${gateMs} ms (${gate.count} events)\nswitch to histogram ${histMs} ms`)
   expect(gate.count).toBeGreaterThan(0)
   expect(loadMs).toBeLessThan(30_000)
   expect(gateMs).toBeLessThan(15_000)
