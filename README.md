@@ -37,7 +37,7 @@ The program is not code-signed, so Windows may show a warning. If Windows blocks
 
 On a Mac, shortcuts use ⌘ and ⌥ instead of Ctrl and Alt, and ⌫ deletes. To uninstall, drag Freeflow from *Applications* to the Trash.
 
-The Mac build is made, and its interface tests are run, by GitHub Actions on every push (203 browser tests pass on a Mac machine). It is new on Mac, so please report anything odd in the [Issues](../../issues).
+The Mac build is made, and its interface tests are run, by GitHub Actions on every push (203 browser tests pass on a Mac machine). It has also been tried by hand on a real Mac. It is newer than the Windows version, so please report anything odd in the [Issues](../../issues).
 
 ## Documentation
 

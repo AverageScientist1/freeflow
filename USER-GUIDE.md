@@ -42,7 +42,7 @@ The lasting fix is a code-signing certificate (for example Azure Trusted Signing
 
 **Portable (no installation):** download the `.zip` instead of the `.dmg`, unzip it and run `Freeflow.app` from anywhere (the Desktop, a USB drive). It needs the same one-time step above. On a Mac every app is already portable: to remove it, just delete `Freeflow.app`.
 
-The Mac version is new and has not yet been tried by hand on many Macs. Please report problems in the repository's Issues.
+The Mac version has been tried by hand on a real Mac and works, but it is newer than the Windows one. Please report problems in the repository's Issues.
 
 ## Uninstall
 
@@ -214,5 +214,5 @@ Freeflow works only on your computer and **does not use the network** (checked i
 
 - Tested with files from a **CytoFLEX** (FCS 3.0) and with synthetic data of up to 2 million events (loading and plotting 1.5 million events takes about 5 seconds).
 - Compensation was checked with known matrices and with identity matrices; it has **not been compared with another program** using a real matrix.
-- **Not available yet:** FlowSOM and other clustering algorithms besides k-means, using the UMAP/t-SNE map as axes to draw gates, virtual concatenation inside the normal plots (it exists only in the Cluster Explorer), booleans with more than one level of parents, and a Mac version tested on real machines.
+- **Not available yet:** FlowSOM and other clustering algorithms besides k-means, using the UMAP/t-SNE map as axes to draw gates, virtual concatenation inside the normal plots (it exists only in the Cluster Explorer), and booleans with more than one level of parents.
 - It does not read files from other programs (for example `.wsp`).

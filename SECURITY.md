@@ -35,7 +35,7 @@ Reviewed for version 0.11.1. This describes what was checked, how to repeat it, 
 
 - The program is **not code-signed** (no publisher certificate): Windows and macOS may warn about it or block it for that reason, not because it contains anything harmful. People who download the installers cannot verify who made them. Each release lists SHA-256 checksums so a download can be compared with what was published.
 - **Chromium and Electron** (the engine underneath) are heavily audited third-party software; their code was not reviewed. No network traffic was observed, but that is a one-time check, not a guarantee.
-- The **Mac** version has been built and its interface tests run on a Mac machine in GitHub Actions, but it has not been tried by hand on many real Macs.
+- The **Mac** version has been built and its interface tests run on a Mac machine in GitHub Actions, and it has been tried by hand on a real Mac, but on far fewer machines than the Windows version.
 - This review was done by the program's own authors; for critical use, an independent review is advisable.
 
 ## How to repeat it
