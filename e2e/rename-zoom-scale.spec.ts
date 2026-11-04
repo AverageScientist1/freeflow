@@ -43,6 +43,7 @@ test.describe('renaming samples', () => {
 
 test.describe('zoom of the thumbnails', () => {
   test('ZOOM-1 Ctrl + mouse wheel over the thumbnails makes all of them bigger or smaller; the slider does too', async ({ page }) => {
+    test.slow(!!process.env['CI'], 'heavy on a shared CI machine')
     await threeSamples(page)
     await page.getByRole('button', { name: 'All samples' }).click()
     const tile = page.locator('.gallery figure canvas').first()

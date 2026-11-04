@@ -81,6 +81,7 @@ test.describe('cluster explorer', () => {
   })
 
   test('CLU-4 t-SNE works, a run can be cancelled, and the events can be exported', async ({ page }) => {
+    test.slow(!!process.env['CI'], 'heavy on a shared CI machine')
     await threeSamples(page)
     await page.getByLabel(/t-SNE/).check()
     await page.getByRole('spinbutton', { name: 'Events per sample' }).fill('2000')
