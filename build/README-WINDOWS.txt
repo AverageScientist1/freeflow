@@ -9,8 +9,8 @@ Remove:     close Freeflow and delete this folder. There is no uninstaller for t
 
 If Windows says an app was blocked (Smart App Control / "App Control policy"):
 Freeflow.exe in this ZIP is the unmodified Electron runtime, so Windows normally allows it. If you use the
-installer or the single-file portable and Windows blocks it, use this ZIP instead. See GUIA-DE-USO.md in the
-source package for details.
+installer or the single-file portable and Windows blocks it, use this ZIP instead. See USER-GUIDE.md in the
+repository for details.
 
 The installer (Freeflow-Setup-x.y.z.exe) adds Start menu and desktop shortcuts and an entry in
 Settings > Apps > Installed apps, where "Uninstall" removes the program, its shortcuts and file associations.
