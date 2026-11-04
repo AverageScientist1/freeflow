@@ -40,6 +40,8 @@ The lasting fix is a code-signing certificate (for example Azure Trusted Signing
 
    You only need to do this the first time.
 
+**Portable (no installation):** download the `.zip` instead of the `.dmg`, unzip it and run `Freeflow.app` from anywhere (the Desktop, a USB drive). It needs the same one-time step above. On a Mac every app is already portable: to remove it, just delete `Freeflow.app`.
+
 The Mac version is new and has not yet been tried by hand on many Macs. Please report problems in the repository's Issues.
 
 ## Uninstall
