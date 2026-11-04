@@ -45,8 +45,6 @@ jobs:
       - name: Start the program on a Mac and drive it once
         if: runner.os == 'macOS' && !cancelled()
         run: npm run test:desktop
-        env:
-          FREEFLOW_SOFTWARE_GL: 1
       - run: ${{ matrix.command }}
         if: ${{ !cancelled() }}
         env:

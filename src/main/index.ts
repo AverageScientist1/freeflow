@@ -164,15 +164,6 @@ ipcMain.handle('file:savePng', async (_e, dataUrl: string, suggested: string) =>
   return r.filePath
 })
 
-// Plots are drawn with WebGL2. On a computer with no usable graphics card (a virtual machine, a remote session, a CI runner)
-// setting FREEFLOW_SOFTWARE_GL=1 draws them on the processor instead.
-if (process.env['FREEFLOW_SOFTWARE_GL']) {
-  app.disableHardwareAcceleration()
-  for (const [name, value] of [['use-angle', 'swiftshader'], ['enable-unsafe-swiftshader'], ['ignore-gpu-blocklist'], ['in-process-gpu'], ['disable-gpu-sandbox']]) {
-    app.commandLine.appendSwitch(name, value)
-  }
-}
-
 // One window only: opening another file while the program is running hands it to the open window.
 if (!app.requestSingleInstanceLock()) {
   app.quit()
