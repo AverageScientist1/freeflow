@@ -16,6 +16,8 @@ Programa de escritorio (Windows y Mac) para analizar datos de citometría de flu
 
 Builds are attached to each [release](../../releases). On Windows: an installer (with uninstaller), a single-file portable, and a `.zip` that needs no installation. On Mac: a `.dmg` or `.zip` (Apple silicon and Intel).
 
+The Mac build is made and its UI tests are run by GitHub Actions on every push (a Mac without a graphics card, so the plotting tests of the desktop shell are informational there); it has not yet been tried by hand on a real Mac.
+
 The programs are **not code-signed**, so Windows and macOS may warn on the first run; the guide explains what to do. If Windows blocks the installer or the portable, the `.zip` runs without trouble.
 
 ## Build from source
