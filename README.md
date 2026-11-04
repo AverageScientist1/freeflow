@@ -14,11 +14,27 @@ Programa de escritorio (Windows y Mac) para analizar datos de citometría de flu
 
 ## Download
 
-Builds are attached to each [release](../../releases). On Windows: an installer (with uninstaller), a single-file portable, and a `.zip` that needs no installation. On Mac: a `.dmg` or `.zip` (Apple silicon and Intel).
+Builds are on the [Releases](../../releases) page.
 
-The Mac build is made and its UI tests are run by GitHub Actions on every push (a Mac without a graphics card, so the plotting tests of the desktop shell are informational there); it has not yet been tried by hand on a real Mac.
+**Windows:** `Freeflow-Setup-X.Y.Z.exe` (installer, with uninstaller), `Freeflow-Portable-X.Y.Z.exe` (single file, no installation) or `Freeflow-X.Y.Z-win-x64.zip` (extract and run `Freeflow.exe`). If Windows blocks the installer or the portable, the `.zip` runs without trouble.
 
-The programs are **not code-signed**, so Windows and macOS may warn on the first run; the guide explains what to do. If Windows blocks the installer or the portable, the `.zip` runs without trouble.
+**Mac:** download the `.dmg` that matches your chip (Apple menu > About This Mac):
+- `Freeflow-X.Y.Z-mac-arm64.dmg`: Apple silicon (M1, M2, M3, M4)
+- `Freeflow-X.Y.Z-mac-x64.dmg`: Intel
+
+Open it and drag Freeflow to *Applications*. The first time, right-click (or Control-click) Freeflow, choose **Open**, then **Open** again: the program is not signed with an Apple developer account, so macOS asks for this once. If macOS says the app is "damaged", run this once in the Terminal and open it again:
+
+```
+xattr -cr /Applications/Freeflow.app
+```
+
+On a Mac, shortcuts use ⌘ and ⌥ instead of Ctrl and Alt, and ⌫ deletes. To uninstall, drag Freeflow from *Applications* to the Trash (preferences are in `~/Library/Application Support/Freeflow`).
+
+The Mac build is made and its interface tests are run by GitHub Actions on every push (203 browser tests pass on a Mac machine); it is new on Mac, so please report anything odd in the [Issues](../../issues).
+
+The programs are **not code-signed**, so Windows and macOS may warn on the first run.
+
+Los instaladores están en la página de [Releases](../../releases). En Mac: abre el `.dmg` que corresponde a tu chip, arrastra Freeflow a *Aplicaciones* y la primera vez usa clic derecho > **Abrir** > **Abrir**. Detalles en [`GUIA-DE-USO.md`](GUIA-DE-USO.md).
 
 ## Build from source
 

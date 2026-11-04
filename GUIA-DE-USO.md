@@ -164,7 +164,9 @@ Modo **Compensation** (icono de cuadrícula, Alt+3). Si el archivo trae matriz d
 
 ## Versión para Mac
 
-El programa de Mac **solo se puede construir en un Mac** (lo exige Apple/Electron). Hay dos formas de obtenerlo:
+**Descarga:** en la página *Releases* del repositorio están los `.dmg` para Mac con chip Apple (`-mac-arm64`, M1 o más nuevo) y para Mac Intel (`-mac-x64`); en *Acerca de este Mac* se ve qué chip tiene. Abre el `.dmg` y sigue los pasos de "Primera vez en el Mac" más abajo.
+
+Para construirlo uno mismo: el programa de Mac **solo se puede construir en un Mac** (lo exige Apple/Electron). Hay dos formas:
 
 **A. En un Mac** (macOS 11 o más nuevo), con Node.js 24 y una copia de este repositorio:
 
